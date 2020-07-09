@@ -2,8 +2,6 @@ package test.java.order;
 
 
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
-
 import static com.codeborne.selenide.Condition.*;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -27,7 +25,7 @@ public class OrderTest {
         $("[data-test-id='phone'] input").setValue("+79098765432");
         $("[data-test-id=agreement]").click();
         $$("button").find(exactText("Продолжить")).click();
-        $(By.className("input_invalid")).shouldHave(text("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы."));
+        $(".input_invalid[data-test-id='name']").shouldHave(text("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы."));
         $("[data-test-id='name']").shouldHave(cssValue("color", "rgba(255, 92, 92, 1)"));
     }
 
@@ -38,7 +36,7 @@ public class OrderTest {
         $("[data-test-id='phone'] input").setValue("89098765432");
         $("[data-test-id=agreement]").click();
         $$("button").find(exactText("Продолжить")).click();
-        $(By.className("input_invalid")).shouldHave(text("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678."));
+        $(".input_invalid[data-test-id='phone']").shouldHave(text("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678."));
     }
 
     @Test
@@ -48,7 +46,7 @@ public class OrderTest {
         $("[data-test-id='phone'] input").setValue("+79098765432");
         $$("button").find(exactText("Продолжить")).click();
         $("[data-test-id=agreement]").shouldHave(text("Я соглашаюсь с условиями обработки и использования моих персональных данных и разрешаю сделать запрос в бюро кредитных историй"));
-        $(By.className("input_invalid")).shouldHave(cssValue("color", "rgba(255, 92, 92, 1)"));
+        $(".input_invalid[data-test-id=agreement]").shouldHave(cssValue("color", "rgba(255, 92, 92, 1)"));
     }
 
     @Test
@@ -57,7 +55,7 @@ public class OrderTest {
         $("[data-test-id='phone'] input").setValue("+79098765432");
         $("[data-test-id=agreement]").click();
         $$("button").find(exactText("Продолжить")).click();
-        $(By.className("input_invalid")).shouldHave(text("Поле обязательно для заполнения"));
+        $(".input_invalid[data-test-id='name']").shouldHave(text("Поле обязательно для заполнения"));
     }
 
 }
