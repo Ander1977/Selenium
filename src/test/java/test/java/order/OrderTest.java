@@ -22,7 +22,7 @@ public class OrderTest {
     }
 
     @Test
-    void shouldInputNameCurrent() {
+    void shouldInputNameNotCurrent() {
         open("http://localhost:9999");
         $("[data-test-id='name'] input").setValue("Kopatilov Andrey");
         $("[data-test-id='phone'] input").setValue("+79098765432");
@@ -33,7 +33,7 @@ public class OrderTest {
     }
 
     @Test
-    void shouldPhoneNotCorrect() {
+    void shouldInputPhoneNotCorrect() {
         open("http://localhost:9999");
         $("[data-test-id='name'] input").setValue("Копатилов Андрей");
         $("[data-test-id='phone'] input").setValue("89098765432");
